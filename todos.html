@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Todos</h1>
+    <div id="app">
+        <h2>{{addMessage}}</h2>
+        <input type="text" v-model="taskText"/>
+        <button @click="addTask()">Add Task</button>
+        <ul>
+            <li v-for="task in todos">{{task}}
+                <button @click="deleteTask(task)">delete</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data: {
+                todos: [],
+                addMessage: 'Add a new task',
+                taskText: ''
+            },
+            methods: {
+                addTask(){
+                    this.todos.push(this.taskText)
+                    this.taskText = ''
+                },
+                deleteTask(task){
+                    var index = this.todos.indexOf(task)
+                    this.todos.splice(index, 1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
