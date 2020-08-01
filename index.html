@@ -15,6 +15,12 @@
         <a v-bind:href="url">Hyperlink</a>
         <br/>
         <a :href="url">V-bind implied</a>
+        <br/>
+        <input type="text" v-model='key'/>
+        <p v-if="key.length == 0">Enter a key</p>
+        <p v-else-if="key.length > 0 && key.length < 8">Key requires 8 letters</p>
+        <p v-else>Key complete, please submit</p>
+        <button v-show="key.length >=8">Submit</button>
     </div>
     <script>
         var vm = new Vue({
@@ -22,7 +28,8 @@
             data: {
                 message: 'hello world',
                 input: '',
-                url: 'https://www.example.com'
+                url: 'https://www.example.com',
+                key: ''
             }
         })
     </script>
