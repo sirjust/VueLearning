@@ -28,6 +28,10 @@
         <input type="text" v-model="newEventListenerExample" v-on:keyup="eventListenerExample = newEventListenerExample" />
         <h2>Shortcut Example: {{listenerShortcut}}</h2>
         <input type="text" v-model="newListenerShortcut" @keyup="listenerShortcut = newListenerShortcut" />
+        <h2>{{methodCounter}}</h2>
+        <button @click="increment()">increment with method</button>
+        <button @click="increment">no parentheses</button>
+        <h2>{{getFullName()}}</h2>
     </div>
     <script>
         var vm = new Vue({
@@ -41,7 +45,18 @@
                 eventListenerExample: 'example',
                 newEventListenerExample: '',
                 listenerShortcut: 'shortcut',
-                newListenerShortcut: ''
+                newListenerShortcut: '',
+                methodCounter: 0,
+                firstName: 'John',
+                lastName: 'Smith'
+            },
+            methods: {
+                increment() {
+                    this.methodCounter += 1;
+                },
+                getFullName() {
+                    return `${this.firstName} ${this.lastName}` 
+                }
             }
         })
     </script>
