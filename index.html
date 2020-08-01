@@ -21,6 +21,13 @@
         <p v-else-if="key.length > 0 && key.length < 8">Key requires 8 letters</p>
         <p v-else>Key complete, please submit</p>
         <button v-show="key.length >=8">Submit</button>
+        <h1>{{counter}}</h1>
+        <button v-on:click="counter+=1">increment</button>
+        <button v-on:click.ctrl="counter+=5">hold ctrl and click to add by 5</button>
+        <h2>Event Listener Example: {{eventListenerExample}}</h2>
+        <input type="text" v-model="newEventListenerExample" v-on:keyup="eventListenerExample = newEventListenerExample" />
+        <h2>Shortcut Example: {{listenerShortcut}}</h2>
+        <input type="text" v-model="newListenerShortcut" @keyup="listenerShortcut = newListenerShortcut" />
     </div>
     <script>
         var vm = new Vue({
@@ -29,7 +36,12 @@
                 message: 'hello world',
                 input: '',
                 url: 'https://www.example.com',
-                key: ''
+                key: '',
+                counter: 0,
+                eventListenerExample: 'example',
+                newEventListenerExample: '',
+                listenerShortcut: 'shortcut',
+                newListenerShortcut: ''
             }
         })
     </script>
