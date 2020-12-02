@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id='app'>
-        <h1 id="hello-world">{{message}}</h1>
+        <h1 id='hello-world'>{{message}}</h1>
         <h2>{{input}}</h2>
         <input type="text" v-model="input"/>
         <br/>
@@ -21,18 +21,18 @@
         <p v-else-if="key.length > 0 && key.length < 8">Key requires 8 letters</p>
         <p v-else>Key complete, please submit</p>
         <button v-show="key.length >=8">Submit</button>
-        <h1>{{counter}}</h1>
+        <h1 id='counter'>{{counter}}</h1>
         <button v-on:click="counter+=1">increment</button>
-        <button v-on:click.ctrl="counter+=5">hold ctrl and click to add by 5</button>
+        <button id='increment-by-five' v-on:click.ctrl="counter+=5">hold ctrl and click to add by 5</button>
         <h2>Event Listener Example: {{eventListenerExample}}</h2>
         <input type="text" v-model="newEventListenerExample" v-on:keyup="eventListenerExample = newEventListenerExample" />
         <h2>Shortcut Example: {{listenerShortcut}}</h2>
         <input type="text" v-model="newListenerShortcut" @keyup="listenerShortcut = newListenerShortcut" />
-        <h2>{{methodCounter}}</h2>
-        <button @click="increment()">increment with method</button>
+        <h2 id="increment-display">{{methodCounter}}</h2>
+        <button id='increment' @click="increment()">increment with method</button>
         <button @click="increment">no parentheses</button>
         <h2>{{getFullName()}}</h2>
-        <a v-bind:href="todos">Todos</a>
+        <a id="todos-link" v-bind:href="todos">Todos</a>
     </div>
     <script>
         var vm = new Vue({
